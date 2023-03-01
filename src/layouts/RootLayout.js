@@ -8,7 +8,7 @@ const RootLayout = () => {
         <nav className='space-x-1.5'>
           <h1>Tech App</h1>
           <NavLink to='/'>Home</NavLink>
-          <NavLink to='login'>Login</NavLink>
+          <NavLink to='user/login'>Login</NavLink>
           <NavLink to='register'>Register</NavLink>
         </nav>
       </header>
