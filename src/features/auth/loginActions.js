@@ -16,6 +16,7 @@ export const userLogin = createAsyncThunk('user/login', async (userData) => {
       },
     }
     const response = await axios(config)
+    localStorage.setItem('token', response.data.token)
     console.log(response)
     console.log('logged in')
     return response
@@ -23,3 +24,7 @@ export const userLogin = createAsyncThunk('user/login', async (userData) => {
     console.log(error)
   }
 })
+
+export const logout = () => {
+  localStorage.removeItem('token')
+}

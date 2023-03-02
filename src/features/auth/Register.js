@@ -3,7 +3,7 @@ import { Form, redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
-import { registerUser } from './registerActions'
+import { registerUser } from '../auth/registerActions'
 
 const RegisterUser = () => {
   const {

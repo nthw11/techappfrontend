@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { Form, redirect } from 'react-router-dom'
-import { userLogin } from './loginActions'
-import { registerUser } from './registerActions'
+import { userLogin } from '../auth/loginActions'
+import { registerUser } from '../auth/registerActions'
 
 const API = process.env.REACT_APP_BACKEND_API
 
 const initialState = {
+  user_id: '',
   userUsername: '',
   userEmail: '',
   userInfo: {
@@ -43,6 +44,7 @@ const userSlice = createSlice({
   extraReducers: {
     [userLogin.fulfilled]: (state, action) => {
       const user = action.payload.data.user
+      state.user_id = user._id
       state.userUsername = user.userUsername
       state.userInfo.userFirstName = user.userFirstName
       state.userInfo.userLastName = user.userLastName

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import { redirect } from 'react-router-dom'
-import axios from 'axios'
+import { redirect, useNavigate } from 'react-router-dom'
+
 import { userLogin } from './loginActions'
 
 const LoginUser = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -16,19 +17,12 @@ const LoginUser = () => {
 
   const user = useSelector((state) => state.user)
 
-  const loginHandler = (data) => {
+  const loginHandler = async (data) => {
     dispatch(userLogin(data))
     if (user) {
-      console.log(user.userUsername)
-      return redirect('/user/home')
+      return navigate('/user')
     }
   }
-
-  // useEffect(() => {
-  //   if (user) {
-  //     redirect('user/home')
-  //   }
-  // }, [redirect, user])
 
   return (
     <div>
