@@ -1,0 +1,9 @@
+.avatar img {
+  height: 150px;
+  max-width: 150px;
+}
+
+.fullName {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
