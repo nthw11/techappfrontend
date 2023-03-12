@@ -38,7 +38,9 @@ const userSlice = createSlice({
   reducers: {
     login: () => {},
     editUserInfo: () => {},
-    editUserAvatar: () => {},
+    editUserAvatar: (state, action) => {
+      state.userInfo.userAvatar = action.payload
+    },
     deleteUser: () => {},
   },
   extraReducers: {
