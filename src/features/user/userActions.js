@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
 
 const API = process.env.REACT_APP_BACKEND_API
+// const dispatch = useDispatch()
 
 export const editUserAvatar = createAsyncThunk(
   'user/edit',
@@ -27,3 +29,32 @@ export const editUserAvatar = createAsyncThunk(
     }
   }
 )
+
+export const editUserInfo = createAsyncThunk('user/edit', async (userData) => {
+  console.log(userData)
+  try {
+    const id = userData.user_id
+    const config = {
+      method: 'put',
+      url: `${API}/api/user/${id}`,
+      data: {
+        userFirstName: userData.userFirstName,
+        userLastName: userData.userLastName,
+        userEmail: userData.userEmail,
+        userPhone: userData.userPhone,
+        userStreetAddress: userData.userStreetAddress,
+        userCity: userData.userCity,
+        userState: userData.userState,
+        userZipCode: userData.userZip,
+        userBio: userData.userBio,
+      },
+    }
+    const response = await axios(config)
+    console.log(response)
+    console.log('info updated')
+
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+})
