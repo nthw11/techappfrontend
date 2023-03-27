@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'
-import { Form, redirect } from 'react-router-dom'
+import React, { useEffect, useContext } from 'react'
+import { Form, redirect, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { useSelector, useDispatch } from 'react-redux'
+import { UserContext } from '../../contexts/contexts'
 import axios from 'axios'
-import { registerUser } from '../auth/registerActions'
+
+const API = process.env.REACT_APP_BACKEND_API
 
 const RegisterUser = () => {
+  const userContext = useContext(UserContext)
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -13,25 +17,34 @@ const RegisterUser = () => {
     formState: { errors },
   } = useForm()
 
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
-
-  useEffect(() => {
-    if (user) {
-      redirect('user/home')
+  const registerUser = async (data) => {
+    try {
+      console.log(data)
+      const config = {
+        method: 'post',
+        url: `${API}/api/login/user/register`,
+        data: {
+          username: data.username,
+          email: data.email,
+          firstname: data.firstname,
+          lastname: data.lastname,
+          phone: data.phone,
+          password: data.password,
+        },
+      }
+      const response = await axios(config)
+      console.log(response)
+      return navigate('/user')
+    } catch (error) {
+      console.log(error)
     }
-  }, [])
-
-  const registerUserHandler = (data) => {
-    console.log(data)
-    dispatch(registerUser(data))
   }
 
   return (
     <div>
       <h2>Register as a Project Manager</h2>
       <h4>Project Managers create events and hire Techs</h4>
-      <form onSubmit={handleSubmit(registerUserHandler)}>
+      <form onSubmit={handleSubmit(registerUser)}>
         <div className='container mx-auto flex flex-col space-y-1.5'>
           <label>
             <span className='px-3'>Username</span>
