@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { editUserAvatar } from '../user/userActions'
-import { useSelector, useDispatch } from 'react-redux'
+
+import { UserContext } from '../../contexts/contexts'
 
 const ImageUploader = () => {
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
+  const user = useContext(UserContext)
+
   const { register, handleSubmit } = useForm()
 
   const avatarSubmit = async (data) => {
     console.log(data)
     convertBase64(data.avatar[0]).then((base64) => {
       const userId = user.user_id
-      const newAvatar = editUserAvatar(base64, userId)
-      console.log(newAvatar)
-      dispatch(newAvatar)
-      return newAvatar
+      // const newAvatar = editUserAvatar(base64, userId)
+      // console.log(newAvatar)
+
+      // return newAvatar
     })
   }
 

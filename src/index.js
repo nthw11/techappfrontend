@@ -1,23 +1,34 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './index.css';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+import './index.css'
+import {
+  UserContext,
+  TechContext,
+  ProjectContext,
+  CompanyContext,
+} from './contexts/contexts'
+import initialCompanyContext from './contexts/initialCompanyContext'
+import initialProjectContext from './contexts/initialProjectContext'
+import initialUserContext from './contexts/initialUserContext'
+import initialTechContext from './contexts/initialTechContext'
+
+const container = document.getElementById('root')
+const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <CompanyContext.Provider value={initialCompanyContext}>
+      <UserContext.Provider value={initialUserContext}>
+        <TechContext.Provider value={initialTechContext}>
+          <ProjectContext.Provider value={initialProjectContext}>
+            {/* <Provider store={store}> */}
+            <App />
+            {/* </Provider> */}
+          </ProjectContext.Provider>
+        </TechContext.Provider>
+      </UserContext.Provider>
+    </CompanyContext.Provider>
   </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { logout } from '../features/auth/loginActions'
+import { logout } from '../features/auth/UserLoginActions'
 
 const RootLayout = () => {
   const token = localStorage.getItem('token')
