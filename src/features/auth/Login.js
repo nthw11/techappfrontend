@@ -5,7 +5,7 @@ import { UserContext } from '../../contexts/contexts'
 import axios from 'axios'
 // import { UserLogin } from './UserLoginActions'
 const API = process.env.REACT_APP_BACKEND_API
-const LoginUser = () => {
+const Login = () => {
   const navigate = useNavigate()
   const {
     register,
@@ -32,23 +32,24 @@ const LoginUser = () => {
         console.log(response)
         localStorage.setItem('token', response.data.token)
         userContext.user_id = response.data.user._id
-        userContext.userUsername = response.data.user.userUsername
-        userContext.userEmail = response.data.user.userEmail
-        userContext.userFirstName = response.data.user.userFirstName
-        userContext.userLastName = response.data.user.userLastName
-        userContext.userPhone = response.data.user.userPhone
-        userContext.userStreetAddress = response.data.user.userStreetAddress
-        userContext.userCity = response.data.user.userCity
-        userContext.userState = response.data.user.userState
-        userContext.userZipCode = response.data.user.userZipCode
-        userContext.userBio = response.data.user.userBio
-        userContext.userAvatar = response.data.user.userAvatar
-        userContext.userRating = response.data.user.userRating
-        userContext.userReviews = response.data.user.userReviews
-        userContext.userProjects = response.data.user.userProjects
-        userContext.userEndorsements = response.data.user.userEndorsements
-        userContext.userTechNotes = response.data.user.userTechNotes
-        userContext.userFavorites = response.data.user.userFavorites
+        userContext.userType = response.data.user.userType
+        userContext.username = response.data.user.username
+        userContext.email = response.data.user.email
+        userContext.firstName = response.data.user.firstName
+        userContext.lastName = response.data.user.lastName
+        userContext.phone = response.data.user.phone
+        userContext.streetAddress = response.data.user.streetAddress
+        userContext.city = response.data.user.city
+        userContext.state = response.data.user.state
+        userContext.zip = response.data.user.zip
+        userContext.bio = response.data.user.bio
+        userContext.avatar = response.data.user.avatar
+        userContext.rating = response.data.user.rating
+        userContext.reviews = response.data.user.reviews
+        userContext.projects = response.data.user.projects
+        userContext.endorsements = response.data.user.endorsements
+        userContext.techNotes = response.data.user.techNotes
+        userContext.favoriteTechs = response.data.user.favoriteTechs
       })
       console.log('logged in')
       return navigate('/user')
@@ -96,4 +97,4 @@ const LoginUser = () => {
   )
 }
 
-export default LoginUser
+export default Login

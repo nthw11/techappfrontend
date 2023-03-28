@@ -10,21 +10,15 @@ import {
 
 // Pages
 import Home from './features/home/Home'
-import LoginUser from './features/auth/LoginUser'
-import LoginTech from './features/auth/LoginTech'
-import RegisterUser from './features/auth/RegisterUser'
-import RegisterTech from './features/auth/RegisterTech'
-import RegisterLandingPage from './features/auth/RegisterLandingPage'
+import Login from './features/auth/Login'
+import Register from './features/auth/Register'
 import NotFound from './features/notFound/NotFound'
 import UserHome from './features/user/UserHome'
-import TechHome from './features/tech/TechHome'
-import UpdateUser from './features/user/UpdateUser'
-import UpdateTech from './features/tech/UpdateTech'
+import Update from './features/user/Update'
 
 // Layouts
 import RootLayout from './layouts/RootLayout'
 import UserLayout from './layouts/UserLayout'
-import TechLayout from './layouts/TechLayout'
 
 // Styles
 import './App.css'
@@ -34,20 +28,14 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
       <Route index element={<Home />} />
-      <Route path='register' element={<RegisterLandingPage />}>
-        <Route path='pm' element={<RegisterUser />} />
-        <Route path='tech' element={<RegisterTech />} />
-      </Route>
+      <Route path='register' element={<Register />} />
+
       <Route path='user' element={<UserLayout />}>
-        <Route path='login' element={<LoginUser />} />
-        <Route path='edit' element={<UpdateUser />} />
+        <Route path='login' element={<Login />} />
+        <Route path='edit' element={<Update />} />
         <Route path='' element={<UserHome />} />
       </Route>
-      <Route path='tech' element={<TechLayout />}>
-        <Route path='login' element={<LoginTech />} />
-        <Route path='edit' element={<UpdateTech />} />
-        <Route path='' element={<TechHome />} />
-      </Route>
+
       <Route path='*' element={<NotFound />} />
     </Route>
   )

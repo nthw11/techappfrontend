@@ -14,11 +14,9 @@ const RootLayout = () => {
               Home
             </NavLink>
             <NavLink to='user/login' className='button'>
-              Login as Project Manager
+              Login
             </NavLink>
-            <NavLink to='tech/login' className='button'>
-              Login as Tech
-            </NavLink>
+
             <NavLink to='register' className='button'>
               Register
             </NavLink>

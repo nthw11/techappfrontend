@@ -9,23 +9,23 @@ import ImageUploader from '../utility/ImageUploader'
 
 const API = process.env.REACT_APP_BACKEND_API
 
-const UpdateUser = () => {
+const Update = () => {
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
   const user = useContext(UserContext)
 
   const updateUser = async (data) => {
     const updatedUser = {
-      userFirstName: data.userFirstName,
-      userLastName: data.userLastName,
-      userEmail: data.userEmail,
-      userPhone: data.userPhone,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
       user_id: user.user_id,
-      userBio: data.userBio,
-      userStreetAddress: data.userStreetAddress,
-      userCity: data.userCity,
-      userState: data.userState,
-      userZipCode: data.userZipCode,
+      bio: data.bio,
+      streetAddress: data.streetAddress,
+      city: data.city,
+      state: data.state,
+      zip: data.zip,
     }
     const config = {
       method: 'PUT',
@@ -35,16 +35,16 @@ const UpdateUser = () => {
     await axios(config).then((response) => {
       console.log(response)
       user.user_id = response.data._id
-      user.userUsername = response.data.userUsername
-      user.userEmail = response.data.userEmail
-      user.userFirstName = response.data.userFirstName
-      user.userLastName = response.data.userLastName
-      user.userPhone = response.data.userPhone
-      user.userStreetAddress = response.data.userStreetAddress
-      user.userCity = response.data.userCity
-      user.userState = response.data.userState
-      user.userZipCode = response.data.userZipCode
-      user.userBio = response.data.userBio
+      user.username = response.data.username
+      user.email = response.data.email
+      user.firstName = response.data.firstName
+      user.lastName = response.data.lastName
+      user.phone = response.data.phone
+      user.streetAddress = response.data.streetAddress
+      user.city = response.data.city
+      user.state = response.data.state
+      user.zip = response.data.zip
+      user.bio = response.data.bio
     })
     console.log(user)
     return navigate('/user')
@@ -55,8 +55,8 @@ const UpdateUser = () => {
       <div>
         <div className='updateAvatar'>
           <img
-            src={user.userAvatar || defaultAvatar}
-            alt={user.userFirstName + ' ' + user.userLastName}
+            src={user.avatar || defaultAvatar}
+            alt={user.firstName + ' ' + user.lastName}
           />
         </div>
         <ImageUploader />
@@ -67,9 +67,9 @@ const UpdateUser = () => {
             <span className='px-3'>First Name</span>
             <input
               type='text'
-              name='userFirstName'
-              defaultValue={user.userFirstName}
-              {...register('userFirstName', {
+              name='firstName'
+              defaultValue={user.firstName}
+              {...register('firstName', {
                 required: true,
                 minLength: 1,
                 maxLength: 24,
@@ -80,9 +80,9 @@ const UpdateUser = () => {
             <span className='px-3'>Last Name</span>
             <input
               type='text'
-              name='userLastName'
-              defaultValue={user.userLastName}
-              {...register('userLastName', {
+              name='lastName'
+              defaultValue={user.lastName}
+              {...register('lastName', {
                 required: true,
                 minLength: 2,
                 maxLength: 24,
@@ -93,9 +93,9 @@ const UpdateUser = () => {
             <span className='px-3'>Email</span>
             <input
               type='email'
-              name='userEmail'
-              defaultValue={user.userEmail || 'Email'}
-              {...register('userEmail', {
+              name='email'
+              defaultValue={user.email || 'Email'}
+              {...register('email', {
                 required: true,
                 minLength: 3,
                 // maxLength: 24,
@@ -107,9 +107,9 @@ const UpdateUser = () => {
             <input
               type='tel'
               // type='text'
-              name='userPhone'
-              defaultValue={user.userPhone || 'Phone'}
-              {...register('userPhone', {
+              name='phone'
+              defaultValue={user.phone || 'Phone'}
+              {...register('phone', {
                 required: true,
                 minLength: 10,
                 maxLength: 24,
@@ -123,9 +123,9 @@ const UpdateUser = () => {
               <span className='px-3'>Street Address</span>
               <input
                 type='text'
-                name='userStreetAddress'
-                defaultValue={user.userStreetAddress || 'Street Address'}
-                {...register('userStreetAddress', {
+                name='streetAddress'
+                defaultValue={user.streetAddress || 'Street Address'}
+                {...register('streetAddress', {
                   // required: true,
                   minLength: 1,
                   maxLength: 24,
@@ -136,9 +136,9 @@ const UpdateUser = () => {
               <span className='px-3'>City</span>
               <input
                 type='text'
-                name='userCity'
-                defaultValue={user.userCity || 'City'}
-                {...register('userCity', {
+                name='city'
+                defaultValue={user.city || 'City'}
+                {...register('city', {
                   required: true,
                   minLength: 1,
                   maxLength: 24,
@@ -148,9 +148,9 @@ const UpdateUser = () => {
             <label>
               <span className='px-3'>State</span>
               <select
-                name='userState'
+                name='state'
                 // defaultValue={user.userInfo.userAddress.state}
-                {...register('userState', {
+                {...register('state', {
                   required: true,
                   minLength: 2,
                   maxLength: 2,
@@ -215,8 +215,8 @@ const UpdateUser = () => {
               <input
                 type='text'
                 name='userZip'
-                defaultValue={user.userZipCode || 'Zip'}
-                {...register('userZipCode', {
+                defaultValue={user.zip || 'Zip'}
+                {...register('zip', {
                   required: true,
                   minLength: 5,
                   maxLength: 10,
@@ -228,11 +228,11 @@ const UpdateUser = () => {
                 <span className='px-3'>Bio</span>
                 <textarea
                   className='bioTextArea'
-                  name='userBio'
+                  name='bio'
                   rows={10}
                   cols={50}
-                  defaultValue={user.userBio || 'Bio'}
-                  {...register('userBio', {
+                  defaultValue={user.bio || 'Bio'}
+                  {...register('bio', {
                     maxLength: 480,
                   })}
                 />
@@ -248,4 +248,4 @@ const UpdateUser = () => {
   )
 }
 
-export default UpdateUser
+export default Update

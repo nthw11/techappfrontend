@@ -17,35 +17,33 @@ const UserInfo = (userData) => {
       <div className='userInfo'>
         <div className='userName'>
           <p className='fullName'>
-            {user.userData.user.userFirstName} {user.userData.user.userLastName}
+            {user.userData.user.firstName} {user.userData.user.lastName}
           </p>
           <div className='avatar'>
             <img
-              src={user.userData.user.userAvatar || defaultAvatar}
+              src={user.userData.user.avatar || defaultAvatar}
               alt={
-                user.userData.user.userFirstName +
-                ' ' +
-                user.userData.user.userLastName
+                user.userData.user.firstName + ' ' + user.userData.user.lastName
               }
             />
           </div>
         </div>
         <div className='userBio'>
           <h3>Bio</h3>
-          <p>{user.userData.user.userBio}</p>
+          <p>{user.userData.user.bio}</p>
         </div>
       </div>
       <div className='userContact'>
         <h3>Contact</h3>
         <h4>Email</h4>
-        <p>{user.userData.user.userEmail}</p>
+        <p>{user.userData.user.email}</p>
         <h4>Phone</h4>
-        <p>{user.userData.user.userPhone}</p>
+        <p>{user.userData.user.phone}</p>
         <h4>Address</h4>
-        <p>{user.userData.user.userStreetAddress}</p>
-        <p>{user.userData.user.userCity}</p>
-        <p>{user.userData.user.userState}</p>
-        <p>{user.userData.user.userZipCode}</p>
+        <p>{user.userData.user.streetAddress}</p>
+        <p>{user.userData.user.city}</p>
+        <p>{user.userData.user.state}</p>
+        <p>{user.userData.user.zip}</p>
       </div>
 
       <button>
