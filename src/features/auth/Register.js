@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const API = process.env.REACT_APP_BACKEND_API
 
-const RegisterUser = () => {
+const Register = () => {
   const userContext = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -15,7 +15,11 @@ const RegisterUser = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm()
+  } = useForm({
+    defaultValues: {
+      userType: 'tech',
+    },
+  })
 
   const registerUser = async (data) => {
     try {
@@ -25,9 +29,10 @@ const RegisterUser = () => {
         url: `${API}/api/login/user/register`,
         data: {
           username: data.username,
+          userType: data.userType,
           email: data.email,
-          firstname: data.firstname,
-          lastname: data.lastname,
+          firstName: data.firstName,
+          lastName: data.lastName,
           phone: data.phone,
           password: data.password,
         },
@@ -42,8 +47,7 @@ const RegisterUser = () => {
 
   return (
     <div>
-      <h2>Register as a Project Manager</h2>
-      <h4>Project Managers create events and hire Techs</h4>
+      <h2>Register new user</h2>
       <form onSubmit={handleSubmit(registerUser)}>
         <div className='container mx-auto flex flex-col space-y-1.5'>
           <label>
@@ -59,6 +63,7 @@ const RegisterUser = () => {
               })}
             />
           </label>
+
           <label>
             <span className='px-3'>Email</span>
             <input
@@ -72,18 +77,18 @@ const RegisterUser = () => {
             <span className='px-3'>First Name</span>
             <input
               type='text'
-              name='firstname'
+              name='firstName'
               placeholder='First name'
-              {...register('firstname', { required: true, minLength: 1 })}
+              {...register('firstName', { required: true, minLength: 1 })}
             />
           </label>
           <label>
             <span className='px-3'>Last Name</span>
             <input
               type='text'
-              name='lastname'
+              name='lastName'
               placeholder='Last name'
-              {...register('lastname', { required: true, minLength: 2 })}
+              {...register('lastName', { required: true, minLength: 2 })}
             />
           </label>
           <label>
@@ -104,11 +109,24 @@ const RegisterUser = () => {
               {...register('password', { required: true, minLength: 6 })}
             />
           </label>
+          <label>
+            <span className='px-3 userType'>User Type</span>
+            <h4>Project Managers create events and hire Techs</h4>
+
+            <input {...register('userType')} type='radio' value='pm' />
+            <h4>Techs work events and are hired by Project Managers</h4>
+            <input
+              {...register('userType')}
+              type='radio'
+              value='tech'
+              defaultValue={true}
+            />
+          </label>
           <button
             type='submit'
             className='rounded-full bg-sky-500 max-w-xs submit-button text-white'
           >
-            Register new Project Manager!
+            Register new user!
           </button>
         </div>
       </form>
@@ -116,4 +134,4 @@ const RegisterUser = () => {
   )
 }
 
-export default RegisterUser
+export default Register

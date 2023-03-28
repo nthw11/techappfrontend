@@ -13,7 +13,7 @@ const UserHome = () => {
     return (
       <div>
         <h1 className='header'>User Home Page</h1>
-        <p>Welcome {user.userUsername}</p>
+        <p>Welcome {user.username}</p>
         <UserInfo user={user} />
       </div>
     )
