@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import { redirect, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../contexts/contexts'
 import axios from 'axios'
-// import { UserLogin } from './UserLoginActions'
 const API = process.env.REACT_APP_BACKEND_API
 const Login = () => {
   const navigate = useNavigate()
@@ -46,6 +45,7 @@ const Login = () => {
         userContext.avatar = response.data.user.avatar
         userContext.rating = response.data.user.rating
         userContext.reviews = response.data.user.reviews
+        userContext.skills = response.data.user.skills
         userContext.projects = response.data.user.projects
         userContext.endorsements = response.data.user.endorsements
         userContext.techNotes = response.data.user.techNotes
