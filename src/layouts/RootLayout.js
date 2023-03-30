@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { logout } from '../features/auth/UserLoginActions'
+import { UserContext } from '../contexts/contexts'
+import initialUserContext from '../contexts/initialUserContext'
 
 const RootLayout = () => {
+  let userContext = useContext(UserContext)
+
+  const logout = () => {
+    localStorage.removeItem('token')
+    userContext(initialUserContext)
+  }
   const token = localStorage.getItem('token')
   return (
     <div className='root-layout '>

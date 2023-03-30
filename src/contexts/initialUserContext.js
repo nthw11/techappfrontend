@@ -29,14 +29,7 @@ const initialUserContext = {
   favoriteTechs: [],
   availability: [],
   schedule: [],
-  skills: [
-    {
-      skillName: '',
-      skillRateFull: '',
-      skillRateHalf: '',
-      skillNegotiable: '',
-    },
-  ],
+  skills: [],
 }
 
 export default initialUserContext

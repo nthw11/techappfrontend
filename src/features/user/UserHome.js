@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import UserInfo from './UserInfo'
 import { UserContext } from '../../contexts/contexts'
+import Skills from './skills/Skills'
 
 const UserHome = () => {
   const user = useContext(UserContext)
@@ -15,6 +16,7 @@ const UserHome = () => {
         <h1 className='header'>User Home Page</h1>
         <p>Welcome {user.username}</p>
         <UserInfo user={user} />
+        <Skills />
       </div>
     )
   }

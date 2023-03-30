@@ -7,7 +7,7 @@ import axios from 'axios'
 const API = process.env.REACT_APP_BACKEND_API
 
 const Register = () => {
-  const userContext = useContext(UserContext)
+  let userContext = useContext(UserContext)
   const navigate = useNavigate()
 
   const {
@@ -39,6 +39,15 @@ const Register = () => {
       }
       const response = await axios(config)
       console.log(response)
+      localStorage.setItem('token', response.data.token)
+      userContext.user_id = response.data.user._id
+      userContext.userType = response.data.user.userType
+      userContext.username = response.data.user.username
+      userContext.email = response.data.user.email
+      userContext.firstName = response.data.user.firstName
+      userContext.lastName = response.data.user.lastName
+      userContext.phone = response.data.user.phone
+      console.log(userContext)
       return navigate('/user')
     } catch (error) {
       console.log(error)
