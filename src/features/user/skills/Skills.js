@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../../../contexts/contexts'
-import EditSkills from './EditSkills'
 import './Skills.css'
 
 const Skills = () => {
   const user = useContext(UserContext)
-  const [skills, setSkills] = useState(user.skills)
+  const skills = user.skills
   return (
     <div className='skillsDiv'>
       <div className='skillsTable'>

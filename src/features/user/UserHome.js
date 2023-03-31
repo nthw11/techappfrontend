@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import UserInfo from './UserInfo'
 import { UserContext } from '../../contexts/contexts'
 import Skills from './skills/Skills'
+import Availability from './scheduling/Availability'
+import CalendarBlock from './scheduling/CalendarBlock'
 
 const UserHome = () => {
   const user = useContext(UserContext)
@@ -17,6 +19,8 @@ const UserHome = () => {
         <p>Welcome {user.username}</p>
         <UserInfo user={user} />
         <Skills />
+        <Availability />
+        <CalendarBlock />
       </div>
     )
   }
