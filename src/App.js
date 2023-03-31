@@ -17,6 +17,7 @@ import UserHome from './features/user/UserHome'
 import Update from './features/user/Update'
 import AddSkills from './features/user/skills/AddSkills'
 import EditSkills from './features/user/skills/EditSkills'
+import EditAvailability from './features/user/scheduling/EditAvailability'
 // Layouts
 import RootLayout from './layouts/RootLayout'
 import UserLayout from './layouts/UserLayout'
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         <Route path='edit' element={<Update />} />
         <Route path='skills' element={<AddSkills />} />
         <Route path='skills/:id' element={<EditSkills />} />
+        <Route path='availability' element={<EditAvailability />} />
       </Route>
 
       <Route path='*' element={<NotFound />} />
