@@ -1,0 +1,44 @@
+.project-builder-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 70vw;
+}
+
+.project-location {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+
+  border-bottom: 1px solid #e0e0e0;
+  max-width: 50vw;
+}
+
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.projectsPanelProject {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  padding: 0 10px;
+
+  border: 1px solid #e0e0e0;
+  width: 50vw;
+}

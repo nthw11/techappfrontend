@@ -19,6 +19,9 @@ const UserInfo = (userData) => {
           <p className='fullName'>
             {user.userData.user.firstName} {user.userData.user.lastName}
           </p>
+          <p className='userType'>
+            {user.userData.user.userType.toUpperCase()}
+          </p>
           <div className='avatar'>
             <img
               src={user.userData.user.avatar || defaultAvatar}

@@ -6,7 +6,7 @@ const Availability = () => {
 
   return (
     <div>
-      <h1>Availability</h1>
+      <h1 className='header'>Availability</h1>
     </div>
   )
 }

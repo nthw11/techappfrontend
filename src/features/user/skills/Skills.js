@@ -5,7 +5,10 @@ import './Skills.css'
 
 const Skills = () => {
   const user = useContext(UserContext)
+  const userType = user.userType
+
   const skills = user.skills
+
   return (
     <div className='skillsDiv'>
       <div className='skillsTable'>
